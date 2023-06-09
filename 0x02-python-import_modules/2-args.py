@@ -6,6 +6,6 @@ if __name__ == "__main__":
     argv = sys.argv[1:]
 
     print("{} argument{}{}"
-   .format(argc, 's' if argc != 1 else '', ':' if argc else '.'))
+            .format(argc, 's'if argc != 1 else '', ':'if argc else '.'))
     for i, arg in enumerate(argv, start=1):
         print("{}: {}".format(i, arg))

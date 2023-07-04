@@ -1,4 +1,5 @@
 #!/usr/bin/python3
-def magic_string(count=[-1]):
-    count[0] += 1
-    return "Holberton" + ", Holberton" * count[0]
+def magic_string():
+    return "BestSchool" * (magic_string.counter + 1)
+
+magic_string.counter = -1

@@ -6,7 +6,6 @@ Fuctions that searches for solutions to N-queen problems
 
 import sys
 
-
 def is_safe(board, row, col, N):
     """ Check if a queen can be placed at board[row][col] """
     """ Check the left side of the row """

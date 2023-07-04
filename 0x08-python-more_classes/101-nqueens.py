@@ -35,10 +35,15 @@ def is_safe(board, row, col, N):
     return True
 
 
-def solve_nqueens(board, col, N):
-    """ Base case: If all queens are placed, print the solution """
+def solve_nqueens(board, col, N, solutions):
+    """ Base case: If all queens are placed, add the solution to the list """
     if col >= N:
-        print_solution(board, N)
+        solution = []
+        for i in range(N):
+            for j in range(N):
+                if board[i][j] == 1:
+                    solution.append([i, j])
+        solutions.append(solution)
         return True
 
     """ Recursive case: Try placing a queen in each row of the current column """
@@ -48,23 +53,12 @@ def solve_nqueens(board, col, N):
             board[i][col] = 1
 
             """ Recursive call to place queens in the next column """
-            solve_nqueens(board, col + 1, N)
+            solve_nqueens(board, col + 1, N, solutions)
 
             """ Backtrack: Remove the queen from the current position """
             board[i][col] = 0
 
     return False
-
-
-def print_solution(board, N):
-    """ Print the board configuration """
-    for i in range(N):
-        for j in range(N):
-            if board[i][j] == 1:
-                print(f"{i}, {j}", end="")
-                if i != N - 1:
-                    print(", ", end="")
-    print()
 
 
 def nqueens(N):
@@ -82,9 +76,14 @@ def nqueens(N):
 
     """ Create an empty board """
     board = [[0 for _ in range(N)] for _ in range(N)]
+    solutions = []
 
     """ Solve the N-queens problem """
-    solve_nqueens(board, 0, N)
+    solve_nqueens(board, 0, N, solutions)
+
+    """ Print the solutions """
+    for solution in solutions:
+        print(solution)
 
 
 if __name__ == "__main__":

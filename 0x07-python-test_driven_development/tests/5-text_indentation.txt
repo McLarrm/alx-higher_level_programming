@@ -1,0 +1,33 @@
+Prints a text with 2 new lines after each of these characters: ., ? and :
+
+Usage:
+    text must be a string
+
+Examples:
+    >>> text_indentation("Hello. How are you? I'm fine.")
+    Hello.
+
+    How are you?
+
+    I'm fine.
+
+
+    >>> text_indentation("This is a paragraph. It has multiple lines.\nEach line is separated by a newline character.")
+    This is a paragraph.
+
+    It has multiple lines.
+
+    Each line is separated by a newline character.
+
+
+    >>> text_indentation("No punctuation in this text")
+    No punctuation in this text
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+      ...
+    TypeError: text must be a string
+
+Raises:
+    TypeError: If text is not a string.
+

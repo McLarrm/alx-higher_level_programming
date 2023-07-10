@@ -2,11 +2,14 @@
 """ Attribute to an object """
 
 
-class MyClass:
-    pass
+def add_attribute(obj, attr, value):
+    """
+    Adds a new attribute to an object if it's possible
+    """
+    if hasattr(obj, attr):
+        raise TypeError("can't add new attribute")
 
-obj = MyClass()
-add_attribute(obj, 'name', 'John')
-print(obj.name)
+    if not hasattr(obj.__class__, attr):
+        setattr(obj.__class__, attr, property())
 
-add_attribute(obj, 'age', 25)
+    setattr(obj, attr, value)

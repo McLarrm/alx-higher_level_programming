@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """ Python data strcuture """
-
-
 import json
+
 
 def from_json_string(my_str):
     """

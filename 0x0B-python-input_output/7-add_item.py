@@ -2,13 +2,24 @@
 """ Adds all arguments to a Python list """
 import sys
 import json
-savejson = __import__("7-save_to_json_file").save_to_json_file
-loadjson = __import__("8-load_from_json_file").load_from_json_file
+from os.path import exists
 
-try:
-    lists = loadjson("add_item.json")
-except FileNotFoundError:
-    lists = []
-for arg in sys.argv[1:]:
-    lists.append(arg)
-savejson(lists, "add_item.json")
+def save_to_json_file(my_obj, filename):
+    with open(filename, 'w') as file:
+        json.dump(my_obj, file)
+    """ Function implementation """
+
+def load_from_json_file(filename):
+    with open(filename, 'r') as file:
+        return json.load(file)
+
+filename = "add_item.json"
+
+if exists(filename):
+    my_list = load_from_json_file(filename)
+else:
+    my_list = []
+
+my_list.extend(sys.argv[1:])
+
+save_to_json_file(my_list, filename)

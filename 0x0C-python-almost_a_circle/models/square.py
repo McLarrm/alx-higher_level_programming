@@ -12,7 +12,7 @@ class Square(Rectangle):
 
     def __str__(self):
         """ Returns the string representation of the square """
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        return (f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}")
 
     def to_dictionary(self):
         """ Returns the dictionary representation of the square """

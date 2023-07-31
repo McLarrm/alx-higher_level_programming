@@ -1,27 +1,25 @@
 #!/usr/bin/python3
-""" Function that prints a text with 2 new lines after each character """
+""" Function that separates sentences """
+
 
 def text_indentation(text):
-    """
-    Prints a text with 2 new lines after each of these characters: ., ? and :
-
-    Args:
-        text (str): The text to be processed.
-
-    Raises:
-        TypeError: If text is not a string.
-
-    """
-
-    if not isinstance(text, str):
+    """ Separates sentences in a given text """
+    if type(text) is not str:
         raise TypeError("text must be a string")
-
-    punctuation = [".", "?", ":"]
-    lines = text.splitlines()
-
-    for line in lines:
-        line = line.strip()
-        if line:
-            for char in punctuation:
-                line = line.replace(char, f"{char}\n\n")
-            print(line)
+    end = 0
+    textlen = len(text)
+    while end < textlen:
+        start = end
+        while start < textlen and text[start] == ' ':
+            start += 1
+        end = start
+        while (end < textlen and text[end] != '.' and text[end] != ':' and
+               text[end] != '?'):
+            end += 1
+        if end < textlen:
+            end += 1
+        print(text[start:end], end="")
+        end -= 1
+        if text[end] == '.' or text[end] == '?' or text[end] == ':':
+            print("\n")
+        end += 1

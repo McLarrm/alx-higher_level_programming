@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """ Defines the Rectangle class """
-
 from models.base import Base
+
 
 class Rectangle(Base):
     """ The Rectangle class """
-
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Initializes a new instance of the Rectangle class """
         super().__init__(id)
@@ -14,6 +13,7 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    """ Width, Getter, Setter """
     @property
     def width(self):
         """ Getter for the width attribute """
@@ -42,6 +42,7 @@ class Rectangle(Base):
             raise ValueError("height must be > 0")
         self.__height = value
 
+    """ X Getter, Setter """
     @property
     def x(self):
         """ Getter for the x attribute """
@@ -70,6 +71,7 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         self.__y = value
 
+    """ Public Method """
     def area(self):
         """ Returns the area of the rectangle """
         return self.__width * self.__height

@@ -91,17 +91,17 @@ class Rectangle(Base):
         """ Updates the attributes of the rectangle based on the arguments """
         attributes = ['id', 'width', 'height', 'x', 'y']
         if args:
-        for i, arg in enumerate(args):
-            if i < len(attributes):
-                setattr(self, attributes[i], arg)
+            for i, arg in enumerate(args):
+                if i < len(attributes):
+                    setattr(self, attributes[i], arg)
         elif kwargs:
             for key, value in kwargs.items():
                 if key in attributes:
                     setattr(self, key, value)
 
-    """ @classmethod
+    @classmethod
     def create(cls, **dictionary):
         """ Returns a new instance with attributes already set """
         instance = cls(1, 1)  # Create a dummy instance with default values
         instance.update(**dictionary)
-        return instance """
+        return instance

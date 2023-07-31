@@ -28,7 +28,7 @@ class Base:
         if cls.__name__ == "Rectangle":
             instance = cls(1, 1)
         else:
-            instance = cls(1)
+            instance = cls(1, 0, 0)  # Modify this line to set the correct x and y values
         instance.update(**dictionary)
         return instance
 

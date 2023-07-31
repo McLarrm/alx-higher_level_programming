@@ -99,9 +99,9 @@ class Rectangle(Base):
                 if key in attributes:
                     setattr(self, key, value)
 
-    @classmethod
+    """ @classmethod
     def create(cls, **dictionary):
         """ Returns a new instance with attributes already set """
         instance = cls(1, 1)  # Create a dummy instance with default values
         instance.update(**dictionary)
-        return instance
+        return instance """

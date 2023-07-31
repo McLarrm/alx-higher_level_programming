@@ -10,7 +10,7 @@ def print_square(size):
         size (int): The size length of the square.
 
     Raises:
-        TypeError: If size is not an integer or if it's a float and less than 0.
+        TypeError: If size is not an integer or if it's a float.
         ValueError: If size is less than 0.
 
     """

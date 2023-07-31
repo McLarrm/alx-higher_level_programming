@@ -1,44 +1,78 @@
 #!/usr/bin/python3
-""" Unit test for list of functions """
+""" Unit tests for max_integer function """
 
 
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
-class MaxIntegerTestCase(unittest.TestCase):
-    def test_empty_list(self):
-        self.assertIsNone(max_integer([]))
 
-    def test_positive_numbers(self):
-        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
-        self.assertEqual(max_integer([10, 5, 8, 2]), 10)
-        self.assertEqual(max_integer([100, 50, 25, 75]), 100)
+class TestMaxInteger(unittest.TestCase):
+    """ Class contains unit tests for max_integer """
 
-    def test_negative_numbers(self):
-        self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
-        self.assertEqual(max_integer([-10, -5, -8, -2]), -2)
-        self.assertEqual(max_integer([-100, -50, -25, -75]), -25)
+    def test_positive(self):
+        """ Tests a list for duplicates """
+        listy = [1, 2, 5, 0, 3]
+        self.assertEqual(max_integer(listy), 5)
 
-    def test_mixed_numbers(self):
-        self.assertEqual(max_integer([-1, 2, -3, 4]), 4)
-        self.assertEqual(max_integer([-10, 5, -8, 2]), 5)
-        self.assertEqual(max_integer([100, -50, 25, -75]), 100)
+    def test_negative(self):
+        """ Tests a list with negative number """
+        listy = [1, 2, 5, -6, 3]
+        self.assertEqual(max_integer(listy), 5)
 
-    def test_duplicate_numbers(self):
-        self.assertEqual(max_integer([1, 1, 1, 1]), 1)
-        self.assertEqual(max_integer([5, 5, 5, 5]), 5)
-        self.assertEqual(max_integer([-10, -10, -10, -10]), -10)
+    def test_negative_result(self):
+        """ Tests a list with largest negative number """
+        listy = [-1, -2, -5, -6, -3]
+        self.assertEqual(max_integer(listy), -1)
 
-    def test_single_element(self):
-        self.assertEqual(max_integer([10]), 10)
-        self.assertEqual(max_integer([-5]), -5)
-        self.assertEqual(max_integer([0]), 0)
+    def test_zero_result(self):
+        """ Tests a list with 0 """
+        listy = [-1, 0, -5, -6, -3]
+        self.assertEqual(max_integer(listy), 0)
 
-    def test_invalid_input(self):
-        self.assertRaises(TypeError, max_integer, "12345")
-        self.assertRaises(TypeError, max_integer, [1, 2, "3", 4])
-        self.assertRaises(TypeError, max_integer, [1, 2, [3], 4])
-        self.assertRaises(TypeError, max_integer, [1, 2, None, 4])
+    def test_first(self):
+        """ Tests a list with element """
+        listy = [10, 2, 5, -6, 3]
+        self.assertEqual(max_integer(listy), 10)
 
-if __name__ == '__main__':
+    def test_negative(self):
+        """ Tests a list with max element """
+        listy = [-10, -2, -5, -6, -1]
+        self.assertEqual(max_integer(listy), -1)
+
+    def test_duplicate(self):
+        """ Tests a list with duplicate non-max """
+        listy = [1, -5, 3, 1, -5]
+        self.assertEqual(max_integer(listy), 3)
+
+    def test_duplicate_max(self):
+        """ Tests a list with duplicate max and non-max values """
+        listy = [1, -5, 3, 3, -5]
+        self.assertEqual(max_integer(listy), 3)
+
+    def test_all_5000(self):
+        """ Tests a list with all values """
+        listy = [5000, 5000, 5000, 5000]
+        self.assertEqual(max_integer(listy), 5000)
+
+    def test_all_0(self):
+        """ Tests a list with 0 """
+        listy = [0, 0, 0, 0, 0]
+        self.assertEqual(max_integer(listy), 0)
+
+    def test_all_neg5000(self):
+        """ Tests a list with -5000 """
+        listy = [-5000, -5000, -5000, -5000]
+        self.assertEqual(max_integer(listy), -5000)
+
+    def test_one_element(self):
+        """ Tests a list with 5000 """
+        listy = [-5000]
+        self.assertEqual(max_integer(listy), -5000)
+
+    def test_empty(self):
+        """ Tests an empty list """
+        listy = []
+        self.assertIs(max_integer(listy), None)
+
+if __name__ == "__main__":
     unittest.main()

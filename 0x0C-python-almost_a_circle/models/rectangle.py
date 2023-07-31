@@ -106,3 +106,8 @@ class Rectangle(Base):
         instance = cls(1, 1)  # Create a dummy instance with default values
         instance.update(**dictionary)
         return instance
+
+    def to_dictionary(self):
+        """ Returns the dictionary representation of a Rectangle"""
+        return ({'id': self.id, 'x': self.x, 'height': self.height,
+                'width': self.width, 'y': self.y})

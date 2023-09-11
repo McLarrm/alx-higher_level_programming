@@ -1,8 +1,4 @@
 #!/usr/bin/node
-const incrementUtils = {
-  incrementAndCall: function(number, theFunction) {
-    const incrementedNumber = number + 1;
-    theFunction(incrementedNumber);
-  }
+exports.addMeMaybe = function (number, theFunction) {
+  theFunction(++number);
 };
-module.exports = incrementUtils;

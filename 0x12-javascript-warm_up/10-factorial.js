@@ -1,4 +1,5 @@
 #!/usr/bin/node
+
 let number = parseInt(process.argv[2]);
 function factorial (num) {
   if (num > 1) {

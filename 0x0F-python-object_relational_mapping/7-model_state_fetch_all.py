@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Start link class to table in database """
+""" Lists all State objects from the database """
 
 import sys
 from model_state import Base, State
@@ -16,16 +16,15 @@ if __name__ == "__main__":
                            format(username, password, database),
                            pool_pre_ping=True)
 
-    # Create all the tables in the database
-    Base.metadata.create_all(engine)
-
     # Create a session to interact with the database
     session = Session(engine)
 
-    # Add an example state to the states table
-    new_state = State(name='California')
-    session.add(new_state)
+    # Query all State objects, sorted by id
+    states = session.query(State).order_by(State.id).all()
 
-    # Commit the changes and close the session
-    session.commit()
+    # Print the results
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
+
+    # Close the session
     session.close()

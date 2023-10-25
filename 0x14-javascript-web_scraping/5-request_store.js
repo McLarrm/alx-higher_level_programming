@@ -1,21 +1,13 @@
 #!/usr/bin/node
 
-const request = require('request');
 const fs = require('fs');
+const request = require('request');
 
-const url = process.argv[2];
-const filePath = process.argv[3];
-
-request(url, (error, response, body) => {
-  if (!error && response.statusCode === 200) {
-    fs.writeFile(filePath, body, 'utf-8', (err) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(`Data written to ${filePath}`);
-      }
+request.get(process.argv[2], function (err, res, data) {
+  if (err) console.log(err);
+  else {
+    fs.writeFile(process.argv[3], data, 'utf-8', (err, res) => {
+      if (err) console.log(err);
     });
-  } else {
-    console.error(error || `Error: Unable to fetch data from ${url}`);
   }
 });

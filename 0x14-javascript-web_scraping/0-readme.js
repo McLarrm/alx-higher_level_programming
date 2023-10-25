@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 
-fs.readFile(process.argv[2], 'utf-8', (err, result) => {
+fs.readFile(process.argv[2], 'utf-8', function (err, result) {
   if (err) {
-    console.error(err);
+    console.log(err);
   } else {
     console.log(result);
   }

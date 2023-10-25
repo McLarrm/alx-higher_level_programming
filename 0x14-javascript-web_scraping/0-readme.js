@@ -1,14 +1,11 @@
 #!/usr/bin/node
 
-const fs = require('fs').promises;
+const fs = require('fs');
 
-async function readAndPrintFile() {
-  try {
-    const result = await fs.readFile(process.argv[2], 'utf-8');
+fs.readFile(process.argv[2], 'utf-8', (err, result) => {
+  if (err) {
+    console.error(err);
+  } else {
     console.log(result);
-  } catch (err) {
-    console.log(err);
   }
-}
-
-readAndPrintFile();
+});
